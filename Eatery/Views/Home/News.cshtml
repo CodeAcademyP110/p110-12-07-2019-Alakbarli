@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "News";
+}
+
+@model VModel
+@using Eatery.DAL
+
+    <partial name="PartialViewStaticSlider" model="@Model.StaticSlider.FirstOrDefault(x => x.ActionName == "News")" />
+<partial name="PartialViewOurMenu" model="Model.OurMenus"/>
+

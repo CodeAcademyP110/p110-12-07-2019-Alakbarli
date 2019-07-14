@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model VModel
+@using Eatery.DAL
+<section class="home-slider owl-carousel">
+
+    @foreach (var slide in Model.Sliders)
+    {
+        <div class="slider-item" style="background-image: url('/img/@slide.SliderImage');">
+
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center">
+                    <div class="col-md-8 text-center col-sm-12 element-animate">
+                        <h1>@slide.Heading</h1>
+                        <p class="mb-5">@slide.Content.</p>
+                        <p><a href="#" class="btn btn-white btn-outline-white">Get Started</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+
+
+</section>
+<!-- END slider -->
+<!--Eating Types-->
+<section class="section bg-light element-animate">
+    <div class="container">
+        <div class="row">
+            @foreach (var Et in Model.EatingTypes.Take(4))
+            {
+                <partial name="/Views/Shared/EatingTypePartialView.cshtml" for="@Et" />
+            }
+
+
+        </div>
+    </div>
+</section>
+
+<!--Eating Types end-->
+<!--Special Dishes-->
+<section class="section element-animate">
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Special Dishes</h2>
+                    <span class="back-text">Dishes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="owl-carousel centernonloop">
+        @foreach (var At in Model.SpecialDishes)
+        {
+            <a href="#" class="item-dishes">
+                <div class="text">
+                    <p class="dishes-price">$@At.Price</p>
+                    <h2 class="dishes-heading">@At.Heading</h2>
+                </div>
+                <img src="~/img/@At.Image" alt="" class="img-fluid">
+            </a>
+        }
+
+
+    </div>
+</section> <!-- .section -->
+<!--Special Dishes end-->
+<!--Our Menu-->
+<partial name="PartialViewOurMenu" model="Model.OurMenus"/>
+
+
+
+
+
+<section class="section element-animate">
+
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Testimonial</h2>
+                    <span class="back-text">Testimonial</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @foreach (var diva in Model.Testimonials.Take(3))
+            {
+                <div class="col-md-4">
+                    <blockquote class="testimonial">
+                        <p>&ldquo; @diva.Content. &rdquo;</p>
+                        <div class="d-flex author">
+                            <img src="~/img/@diva.Image" alt="" class="mr-4">
+                            <div class="author-info">
+                                <h4>@diva.PersonName</h4>
+                                <p>@diva.PersonPosition</p>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            }
+
+        </div>
+    </div>
+</section> <!-- .section -->
+
+<section class="section element-animate">
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Blog</h2>
+                    <span class="back-text">Our Blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <partial name="ViewPartialBlog" model="@Model.Blogs.Take(2)" />
+
+        </div>
+    </div>
+
+</section> <!-- .section -->
+<partial name="/Views/Shared/SubscribePartialView.cshtml" />

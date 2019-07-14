@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+@model VModel
+@using Eatery.DAL
+
+
+
+<partial name="PartialViewStaticSlider" model="@Model.StaticSlider.FirstOrDefault(x => x.ActionName == "about")" />
+
+<div class="section container">
+    <div class="row">
+        <div class="col-lg-6">
+            <p><img src="/img/@Model.HistoryPics.FirstOrDefault().Image" alt="" class="img-fluid"></p>
+            <p class="mb-5"><img src="/img/@Model.HistoryPics.ElementAt(1).Image" alt="" class="img-fluid"></p>
+        </div>
+
+        <div class="col-lg-6 pl-2 pl-lg-5">
+            <h2 class="mb-5">History</h2>
+
+            @Model.History.FirstOrDefault().Content
+        </div>
+    </div>
+</div>
+
+<section class="section element-animate">
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Chefs</h2>
+                    <span class="back-text">Our Chefs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="major-caousel js-carousel-1 owl-carousel">
+                @foreach (var chef in Model.Chefs)
+                {
+                    <div>
+                        <div class="media d-block media-custom text-center">
+                            <a href="adoption-single.html"><img src="/img/@chef.Image" alt="Image Placeholder" class="img-fluid"></a>
+                            <div class="media-body">
+                                <h3 class="mt-0 text-black">@chef.Name @chef.Lastname</h3>
+                                <p class="lead">@chef.Position</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+            </div>
+            <!-- END slider -->
+        </div>
+    </div>
+
+</section> <!-- .section -->
