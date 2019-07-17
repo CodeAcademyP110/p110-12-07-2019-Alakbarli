@@ -1,0 +1,30 @@
+﻿@using Eatery.Models
+@model  StaticSlider
+@{
+    ViewData["Title"] = "Screate";
+}
+<h2>Create a new Static slider</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="IPhoto">Image</label>
+            <input asp-for="IPhoto" class="form-control">
+            <span asp-validation-for="IPhoto"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Heading">Heading</label>
+            <input asp-for="Heading" type="text" class="form-control">
+            <span asp-validation-for="Heading"></span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="ActionName">Heading</label>
+            <input asp-for="ActionName" type="text" class="form-control">
+            <span asp-validation-for="ActionName"></span>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+

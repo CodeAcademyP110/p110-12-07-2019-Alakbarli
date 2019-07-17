@@ -1,0 +1,75 @@
+﻿@model IEnumerable<OurMenu>
+@using Eatery.DAL
+@using Eatery.Models
+
+
+
+<section class="section bg-light element-animate">
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Our Menu</h2>
+                    <span class="back-text-dark">Menu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row no-gutters">
+            @for (int i = 0; i < Model.Count() / 2; i++)
+            {
+
+
+                int c = 0;
+                int cut = 2;
+                <div class="col-md-6">
+                    @foreach (var diva in Model.Skip(c).Take(2))
+                    {
+
+                        c = c + 2;
+                        cut++;
+                        if (cut % 2 == 0)
+                        {
+                            <div class="sched d-block d-lg-flex">
+                                <div class="bg-image order-2" style="background-image: url('/img/@diva.Image');"></div>
+                                <div class="text order-1">
+                                    <h3>@diva.Heading</h3>
+                                    <p>@diva.Content...</p>
+                                    <p class="text-primary h3">$@diva.Price</p>
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="sched d-block d-lg-flex">
+                                <div class="bg-image" style="background-image: url('/img/@diva.Image');"></div>
+                                <div class="text">
+                                    <h3>@diva.Heading</h3>
+                                    <p>@diva.Content...</p>
+                                    <p class="text-primary h3">$@diva.Price</p>
+
+                                </div>
+
+                            </div>
+                        }
+
+
+
+
+
+
+                    }
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+</section> <!-- .section -->

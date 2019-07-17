@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Services";
+}
+
+@model VModel
+@using Eatery.DAL
+
+
+    <partial name="PartialViewStaticSlider" model="@Model.StaticSlider.FirstOrDefault(x => x.ActionName == "Services")" />
+
+    <section class="section bg-light element-animate">
+        <div class="container">
+            <div class="row">
+                @foreach (var Et in Model.EatingTypes)
+                {
+                    <partial name="/Views/Shared/EatingTypePartialView.cshtml" for="@Et" />
+                }
+
+
+            </div>
+        </div>
+    </section>
+

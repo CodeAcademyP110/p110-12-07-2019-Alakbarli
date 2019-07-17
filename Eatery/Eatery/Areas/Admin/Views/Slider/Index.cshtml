@@ -1,0 +1,105 @@
+﻿@using Eatery.Models
+
+@model VModel
+<h3 class="mb-5">Home Slider</h3>
+<a class="btn btn-primary" asp-area="Admin" asp-controller="Slider" asp-action="dcreate">Create new Slider</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slider in Model.Sliders)
+        {
+            <tr>
+                <td><img style="width:200px" class="img-thumbnail" src="/img/@slider.SliderImage" /> </td>
+                <td>@slider.Heading</td>
+
+                <td>
+                    <a class="btn btn-primary" asp-area="Admin" asp-controller="Slider" asp-action="Detail" asp-route-id="@slider.Id">Details</a>
+                    @if (Model.Sliders.Count() > 1)
+                    {
+                        <a class="btn btn-warning" asp-area="Admin" asp-controller="Slider" asp-action="Edit" asp-route-id="@slider.Id">Edit</a>
+                        <a class="btn btn-danger" asp-area="Admin" asp-controller="Slider" asp-action="Delete" asp-route-id="@slider.Id" del-index="@slider.Id">Delete</a>
+
+                    }
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+
+@section scripts{
+    <script>
+        $(".btn-danger").click(function (e) {
+            e.preventDefault();
+            
+            $.ajax({
+                url: "/Admin/Slider/delete/" + $(this).attr("del-index"),
+                type: "POST",
+                success: function (res) {
+                    alert(res);
+
+                }
+
+
+            })
+            
+        });
+        
+    </script>
+}
+
+
+
+
+
+
+
+
+
+<h3 class="mb-3">Static Slider</h3>
+<a class="mt-4 btn btn-primary" asp-area="Admin" asp-controller="Slider" asp-action="screate">Create new Static Slider</a>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Image</th>
+            <th scope="col">Heading</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slider in Model.StaticSlider)
+        {
+            <tr>
+                <td><img style="width:200px" class="img-thumbnail" src="/img/@slider.Image" /> </td>
+                <td>@slider.Heading</td>
+                <td> <a class="btn btn-warning" asp-area="Admin" asp-controller="Slider" asp-action="SEdit" asp-route-id="@slider.Id">Edit</a></td>
+
+
+
+
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+
+</table>
+
+

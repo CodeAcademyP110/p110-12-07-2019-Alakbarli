@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+@using Eatery.Models
+@model Slider
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+                    <td><img style="width:400px" class="img-thumbnail" src="/img/@Model.SliderImage" /> </td>
+                    <td>@Model.Heading</td>
+                    <td>@Model.Content</td>
+
+          </tr>
+            
+
+
+        </tbody>
+    </table>
+
+
+
